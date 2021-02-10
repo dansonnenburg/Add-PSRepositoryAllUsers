@@ -1,5 +1,5 @@
 $content = Get-Content -Path $PSHOME\profile.ps1 -ErrorAction SilentlyContinue
-$stringMatch = 'AzureDevOpsPublic'
+$stringMatch = <REPOSITORY-NAME>
 
 $ContentExists = $false
 ForEach ($line in $content) {
