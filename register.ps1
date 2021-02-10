@@ -1,14 +1,14 @@
-﻿$content = 
+$content = 
 'If((Get-PackageProvider | Where-Object{$_.Name -eq "Nuget"}) -eq $null){
     $null = Install-PackageProvider Nuget -ForceBootstrap -Force 
 }
 
-if (!(Get-PSRepository AzureDevOpsPublic -erroraction SilentlyContinue)){
-    $null = Register-PSRepository -Name AzureDevOpsPublic -SourceLocation "https://croppdevops.pkgs.visualstudio.com/Public/_packaging/Packages/nuget/v2/" -InstallationPolicy Trusted
+if (!(Get-PSRepository <REPOSITORY-NAME> -erroraction SilentlyContinue)){
+    $null = Register-PSRepository -Name <REPOSITORY-NAME> -SourceLocation "<URL>" -InstallationPolicy Trusted
 }'
 
 $profileContent = Get-Content -Path $PSHOME\profile.ps1 -ErrorAction SilentlyContinue
-$stringMatch = 'AzureDevOpsPublic'
+$stringMatch = <REPOSITORY-NAME>
 
 $ContentExists = $false
 ForEach ($line in $profileContent) {
